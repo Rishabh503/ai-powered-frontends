@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
-
+import { RiGeminiLine } from "react-icons/ri";
 const CodeReviewer = () => {
   const [code, setCode] = useState('')
   const [response, setResponse] = useState('')
+  
+  
 
   const handleSubmit=async ()=>{
     try {
-      const res=await fetch('http://localhost:3000/ai/get-review',{
+      const res=await fetch('https://gemini-based-ai-backends.onrender.com/ai/get-review',{
         method:'POST',
         headers: {
           "Content-Type": "application/json",
@@ -26,9 +28,14 @@ const CodeReviewer = () => {
  
   return (
     <main className='min-w-full  min-h-screen'>
+      <div className='flex w-full justify-center'>
       <h3 className='text-center text-3xl'>
- Code Analyser
+        AI Code Analyser 
+   
       </h3>
+      <RiGeminiLine/>
+      </div>
+      
       <div className='p-5 flex gap-2 min-w-full min-h-[80%]'>
         <div className='w-1/2 p-10  bg-gray-700 text-white  h-[600px]'>
         <h1 className='text-center pb-5 text-3xl font-semibold'>Code input</h1>

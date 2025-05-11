@@ -4,11 +4,9 @@ const CodeReviewer = () => {
   const [code, setCode] = useState('')
   const [response, setResponse] = useState('')
   
-  
-
   const handleSubmit=async ()=>{
     try {
-      const res=await fetch('https://gemini-based-ai-backends.onrender.com/ai/get-review',{
+      const res=await fetch('http://localhost:4000/ai/get-review',{
         method:'POST',
         headers: {
           "Content-Type": "application/json",
@@ -16,7 +14,9 @@ const CodeReviewer = () => {
         body:JSON.stringify({code:code})
       })
 
+      // const response=await re
       const response=await res.text()
+      console.log(response)
       if(!response) throw new Error("error here converitng")
         console.log(response)
       setResponse(response)
